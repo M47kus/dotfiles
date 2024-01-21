@@ -1,0 +1,11 @@
+*
+!.gitignore
+!/alacritty/
+!/alacritty/**
+!/waybar/
+!/waybar/**
+!/wofi/
+!/wofi/**
+!/hypr/
+!/hypr/**
+!starship.toml
