@@ -1,15 +1,16 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 40,
+    "height": 35,
     "width":1600,
     "margin": "0 0 0 0",
-    "spacing":0,
+    "spacing":-2,
 
     // Choose the order of the modules
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
-    "modules-right": [ "custom/pacman", "custom/network_traffic", "backlight", "custom/keyboard-layout",  "temperature",  "cpu", "memory", "battery", "pulseaudio", "network", "tray", "idle_inhibitor", "clock","custom/power"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center" : ["clock"],
+    "modules-right": [ "custom/pacman", "backlight", "cpu", "memory", "battery", "pulseaudio", "tray","custom/power"],
 
  // Modules configuration
 
@@ -53,13 +54,13 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%a %d %b  %I:%M %p}",	//12 hour format
-        //"format": " {:%a %d %b  %H:%M}",	//24 hour format
+        //"format": " {:%a %d %b  %I:%M %p}",	//12 hour format
+        "format": " {:%H:%M}",	//24 hour format
         "format-alt": " {:%d/%m/%Y  %H:%M:%S}",
         "timezones": [ "Europe/Berlin" ],
         //"max-length": 200
         "interval": 1,
-        "on-click": "~/.config/waybar/scripts/OCV",
+        // "on-click": "~/.config/waybar/scripts/OCV",
     },
     "cpu": {
         "format": "🖳{usage}%",
@@ -86,7 +87,7 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            //"good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -142,7 +143,7 @@
              "format-ethernet": "{icon} {ifname} ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",    // optional
 },
     "pulseaudio": {
-        "scroll-step": 3, // %, can be a float
+        "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -163,10 +164,5 @@
         "on-click": "pavucontrol",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
         },
-        // https://github.com/chubin/wttr.in
-        "custom/weather": {
-        "exec": "curl 'https://wttr.in/Essen?format=2'",
-        "interval": 900,
-	    "on-click": "yad --html --uri='https://wttr.in/Essen' --center --fixed --width=1000 --height=680 --timeout=60 --timeout-indicator=right"
-        },
+        
     }
